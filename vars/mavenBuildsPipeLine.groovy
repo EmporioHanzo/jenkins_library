@@ -1,5 +1,5 @@
 #!groovy​
-//import com.jenkins.*
+import com.jenkins.*
 
 def call() {
     //LinkedHashMap config = [:]

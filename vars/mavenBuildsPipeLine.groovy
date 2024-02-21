@@ -1,18 +1,24 @@
 import com.jenkins.*
 
-def call(Closure body) {
-    LinkedHashMap config = [:]
-    body.resolveStrategy = Closure.DELEGATE_FIRST
-    body.delegate = config
-    body()
+def call() {
+    //LinkedHashMap config = [:]
+    //body.resolveStrategy = Closure.DELEGATE_FIRST
+    //body.delegate = config
+    //body()
+
+    def props = libraryResource('/config.properties')
+    def maven = props['maven']
+    def cron = props['cron']
+    def label = props['label']
+    
 
     pipeline {
 
         triggers {
-            cron(config.cron)
+            cron(cron)
         }
 
-        agent { label config.label }
+        agent { label label }
 
         stages {
 

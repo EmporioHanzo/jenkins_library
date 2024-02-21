@@ -7,7 +7,7 @@ def call() {
     //body.delegate = config
     //body()
 
-    def props = libraryResource('config.properties')
+    def props = readProperties  file:libraryResource('config.properties')
     def maven = props['maven']
     def cron = props['cron']
     def label = props['label']

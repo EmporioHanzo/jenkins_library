@@ -16,10 +16,13 @@ def call() {
     pipeline {
 
         triggers {
-            cron(cron)
+            script {
+                cron(cron)
+            }
         }
-
+        script {
         agent { label label }
+        }
 
         stages {
 
